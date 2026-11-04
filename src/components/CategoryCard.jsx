@@ -17,6 +17,7 @@ export default function CategoryCard({
 
   return (
     <motion.button
+    layoutId={`category-${category.id}`}
       type="button"
       className={isWide ? "category-card is-wide" : "category-card"}
       data-wide={isWide ? "true" : "false"}
@@ -35,23 +36,31 @@ export default function CategoryCard({
       aria-expanded="false"
       aria-label={`Open ${category.name}`}
     >
-      <span className="category-copy">
+      <motion.span
+  className="category-copy"
+  layout="position"
+  transition={{ duration, ease: EASE }}
+>
         <span className="category-name">{category.name}</span>
         <AnimatePresence initial={false}>
           {isWide ? (
             <motion.span
-              key="intro"
-              className="category-intro-wrap"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: reduce ? 0.01 : 0.32, ease: EASE }}
-            >
+            key="intro"
+            className="category-intro-wrap"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              duration: reduce ? 0.01 : 0.32,
+              ease: EASE,
+              delay: reduce ? 0 : 0.08,
+            }}
+          >
               <span className="category-intro">{category.introduction}</span>
             </motion.span>
           ) : null}
         </AnimatePresence>
-      </span>
+      </motion.span>
     </motion.button>
   );
 }

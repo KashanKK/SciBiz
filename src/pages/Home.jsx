@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import "../styles/Home.css";  
-import useScrollReveal from "../hooks/useScrollReveal";
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -36,7 +35,6 @@ const letterVariants = {
 };
 
 export default function Home() {
-  useScrollReveal();
 
   useEffect(() => {
     document.title = "SciBiz";
@@ -44,7 +42,7 @@ export default function Home() {
 
   return (
     <main className="home-page">
-      <div className="home-hero" data-reveal>
+      <div className="home-hero">
 
         <motion.h1
           variants={containerVariants}

@@ -18,8 +18,10 @@ export default function ExpandedCategory({ category, onSelect }) {
       transition={{ duration: reduce ? 0.01 : 0.22, ease: EASE }}
     >
       <motion.button
+      layoutId={`category-${category.id}`}
         type="button"
         className="detail-card detail-center"
+        style={{ zIndex: 2 }}
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0 }}
@@ -34,8 +36,9 @@ export default function ExpandedCategory({ category, onSelect }) {
 
       <motion.article
         className="detail-card detail-description"
-        initial={{ opacity: 0, x: -16 }}
-        animate={{ opacity: 1, x: 0 }}
+        style={{ zIndex: 1 }}
+        initial={{ opacity: 0, x: "100%" }}
+animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0 }}
         transition={{ duration, ease: EASE, delay: reduce ? 0 : 0.05 }}
       >
@@ -45,8 +48,9 @@ export default function ExpandedCategory({ category, onSelect }) {
 
       <motion.article
         className="detail-card detail-rules"
-        initial={{ opacity: 0, x: 16 }}
-        animate={{ opacity: 1, x: 0 }}
+        style={{ zIndex: 1 }}
+        initial={{ opacity: 0, x: "-100%" }}
+animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0 }}
         transition={{ duration, ease: EASE, delay: reduce ? 0 : 0.08 }}
       >
