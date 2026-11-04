@@ -1,0 +1,184 @@
+.registration-page {
+  width: min(640px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 72px 0 96px;
+}
+
+.registration-page h1 {
+  font-family: var(--serif);
+  font-weight: 450;
+  font-size: clamp(3rem, 7vw, 4.7rem);
+  letter-spacing: -0.04em;
+  line-height: 0.94;
+}
+
+.lede {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 1.06rem;
+  line-height: 1.65;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 36px;
+}
+
+.field,
+.choice-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-inline-size: 0;
+}
+
+.field label,
+.choice-field legend {
+  padding: 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.field input {
+  width: 100%;
+  height: 52px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fbfaf7;
+}
+
+.field input[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+
+.field-error {
+  color: var(--danger);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.choice-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.choice {
+  min-height: 56px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: #fbfaf7;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    background-color 0.25s var(--ease),
+    color 0.25s var(--ease),
+    border-color 0.25s var(--ease);
+}
+
+.choice:hover,
+.sub-option:hover {
+  border-color: rgba(20, 21, 19, 0.35);
+}
+
+.choice.is-selected {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+.sub-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sub-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 54px;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fbfaf7;
+  cursor: pointer;
+  transition:
+    background-color 0.25s var(--ease),
+    color 0.25s var(--ease),
+    border-color 0.25s var(--ease);
+}
+
+.sub-option input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--ink);
+}
+
+.sub-option:has(input:checked) {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+.sub-option:has(input:checked) input {
+  accent-color: #f4f2ec;
+}
+
+.submit-btn {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.receipt {
+  margin: 32px 0;
+}
+
+.receipt div {
+  display: grid;
+  grid-template-columns: 9.5rem 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+
+.receipt div:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.receipt dt {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.receipt dd {
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  .registration-page {
+    width: min(640px, calc(100% - 32px));
+    padding-top: 48px;
+  }
+
+  .choice-row,
+  .receipt div {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
