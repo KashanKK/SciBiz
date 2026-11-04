@@ -8,7 +8,7 @@ import useScrollReveal from "../hooks/useScrollReveal";
 const EASE = [0.22, 1, 0.36, 1];
 
 export default function Science() {
-  useScrollReveal();
+  useScrollReveal(".event-hero[data-reveal]");
   useEffect(() => {
     document.title = "Science & Engineering — SciBiz";
   }, []);

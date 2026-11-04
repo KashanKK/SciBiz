@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "framer-motion";
 import CategoryCard from "./CategoryCard.jsx";
 import ExpandedCategory from "./ExpandedCategory.jsx";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -19,6 +20,8 @@ function estimateMetrics() {
 }
 
 export default function CategoryGrid({ categories }) {
+  useScrollReveal(".category-row[data-reveal]");
+  
   const [selectedId, setSelectedId] = useState(null);
   const [hoveredId, setHoveredId] = useState(null);
   const [inViewId, setInViewId] = useState(null);
@@ -141,6 +144,7 @@ export default function CategoryGrid({ categories }) {
               layout="position"
               key={category.id}
               className="category-row"
+              data-reveal="fade"
               transition={{
                 layout: { duration: reduce ? 0.01 : 0.4, ease: EASE },
               }}
