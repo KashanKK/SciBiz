@@ -207,3 +207,19 @@
     min-height: 220px;
   }
 }
+.category-list {
+  position: relative;
+  isolation: isolate;
+}
+
+.category-grid-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: 0;
+  pointer-events: none;
+  overflow: visible;
+}

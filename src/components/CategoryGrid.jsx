@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "framer-motion";
 import CategoryCard from "./CategoryCard.jsx";
 import ExpandedCategory from "./ExpandedCategory.jsx";
+import CategoryGridLine from "./CategoryGridLine.jsx";
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -133,6 +134,7 @@ export default function CategoryGrid({ categories }) {
   return (
     <LayoutGroup>
       <div className="category-list" ref={listRef}>
+      <CategoryGridLine containerRef={listRef} />
       {categories.map((category, index) => {
           const isSelected = selectedId === category.id;
           const isWide = !isSelected && wideId === category.id;
