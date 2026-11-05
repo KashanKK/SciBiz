@@ -34,7 +34,7 @@ export default function CategoryGridLine({ containerRef }) {
   if (!width || !height) return null;
 
   const path = `
-    M -3 0
+    M -3 60
     C ${width * 0.16} ${height * 0.04},
       ${width * 0.03} ${height * 0.09},
       ${width * 0.09} ${height * 0.14}
