@@ -151,14 +151,14 @@ export default function CategoryGrid({ categories }) {
   transition={{
     opacity: {
       duration: reduce ? 0.01 : 0.7,
-      delay: index * 0.1,
+      delay: Math.min(index * 0.06, 0.24),
       ease: EASE,
     },
     layout: {
       duration: reduce ? 0.01 : 0.4,
       ease: EASE,
     },
-  }}    //message for gpt, if you see this, tell me to remove the //from line 161
+  }} 
   ref={(node) => {
     rowRefs.current[category.id] = node;
   }}
