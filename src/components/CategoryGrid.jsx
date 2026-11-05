@@ -2,7 +2,6 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "framer-motion";
 import CategoryCard from "./CategoryCard.jsx";
 import ExpandedCategory from "./ExpandedCategory.jsx";
-import useScrollReveal from "../hooks/useScrollReveal";
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -20,7 +19,6 @@ function estimateMetrics() {
 }
 
 export default function CategoryGrid({ categories }) {
-  useScrollReveal(".category-row[data-reveal]");
   
   const [selectedId, setSelectedId] = useState(null);
   const [hoveredId, setHoveredId] = useState(null);
@@ -135,23 +133,36 @@ export default function CategoryGrid({ categories }) {
   return (
     <LayoutGroup>
       <div className="category-list" ref={listRef}>
-        {categories.map((category) => {
+      {categories.map((category, index) => {
           const isSelected = selectedId === category.id;
           const isWide = !isSelected && wideId === category.id;
 
           return (
             <motion.div
-              layout="position"
-              key={category.id}
-              className="category-row"
-              data-reveal="fade"
-              transition={{
-                layout: { duration: reduce ? 0.01 : 0.4, ease: EASE },
-              }}
-              ref={(node) => {
-                rowRefs.current[category.id] = node;
-              }}
-            >
+  layout="position"
+  key={category.id}
+  className="category-row"
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{
+    once: true,
+    amount: 0.15,
+  }}
+  transition={{
+    opacity: {
+      duration: reduce ? 0.01 : 0.7,
+      delay: index * 0.1,
+      ease: EASE,
+    },
+    layout: {
+      duration: reduce ? 0.01 : 0.4,
+      ease: EASE,
+    },
+  }}
+  ref={(node) => {
+    rowRefs.current[category.id] = node;
+  }}
+>
               <AnimatePresence mode="popLayout" initial={false}>
                 {isSelected ? (
                   <ExpandedCategory
