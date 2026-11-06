@@ -21,7 +21,7 @@ export default function Business() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.42, ease: EASE }}
         >
-          Business & Economics
+          Business
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 12 }}

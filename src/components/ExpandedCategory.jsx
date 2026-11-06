@@ -81,19 +81,24 @@ animate={{ opacity: 1, x: 0 }}
           <p>{category.rules}</p>
         </div>
         {category.additional ? (
-          <div className="detail-block">
-            <h2 className="detail-label">
-  {category.id === "science-2"
-    ? "Programming Knowledge:"
-    : "Additional information"}
-</h2>
-            <ul>
-  {category.additional.map((item, index) => (
-    <li key={index}>{item}</li>
-  ))}
-</ul>
-          </div>
-        ) : null}
+  <div className="detail-block">
+    <h2 className="detail-label">
+      {category.id === "science-2"
+        ? "Programming Knowledge:"
+        : "Additional information"}
+    </h2>
+
+    {Array.isArray(category.additional) ? (
+      <ul>
+        {category.additional.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    ) : (
+      <p>{category.additional}</p>
+    )}
+  </div>
+) : null}
       </motion.article>
 
       {/* extra details */}
