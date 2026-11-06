@@ -245,6 +245,7 @@
   display: flex;
   gap: 12px;
   pointer-events: none;
+  border-radius: 20px;
 }
 
 .extra-detail-card {
@@ -252,7 +253,71 @@
   min-width: 0;
   min-height: 0;
   height: 100%;
-  overflow-y: auto;
+  overflow-y: hidden;
   pointer-events: auto;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.14);
+}
+
+/* Equal-width layout for categories with 2 detail sections */
+
+.expanded[data-detail-count="2"][data-details-open="true"] .detail-description {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 8px;
+  right: calc(50% + 6px);
+  width: auto;
+  min-width: 0;
+  min-height: 0;
+  grid-area: auto;
+}
+
+.expanded[data-detail-count="2"][data-details-open="true"] .extra-details {
+  left: calc(50% + 6px);
+}
+
+/* Animated background behind expanded detail cards */
+
+.expanded::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  z-index: 2;
+  background: #e2e2e2;
+  border-radius: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.expanded[data-details-open="true"]::before {
+  opacity: 1;
+}
+
+/* Keep original cards underneath the background */
+
+.expanded[data-details-open="true"] .detail-center,
+.expanded[data-details-open="true"] .detail-rules {
+  z-index: 0 !important;
+}
+
+/* Keep expanded detail cards above the background */
+
+.expanded[data-details-open="true"] .detail-description {
+  z-index: 4 !important;
+}
+
+.expanded[data-details-open="true"] .extra-details {
+  z-index: 3;
+}
+
+.detail-block ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.detail-block li {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  margin-bottom: 8px;
 }

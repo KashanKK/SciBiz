@@ -23,8 +23,16 @@ export const scienceCategories = [
       "Detailed event description placeholder for Placeholder Category 2. Replace this with the full description of the category.",
     rules:
       "Rules placeholder for Placeholder Category 2. Replace this with the eligibility, format, and rules for the category.",
-    additional:
-      "Additional information placeholder for Placeholder Category 2. Replace this with any extra details.",
+      additional: [
+        "Block-Based Programming",
+        "Variables, Loops & Conditionals",
+        "Events, Functions & Program Logic",
+        "Debugging",
+        "Binary, ASCII & Hex",
+        "Basic Encodings & Ciphers",
+        "File Metadata & Simple Digital Forensics"
+      ],
+   
       details: [
         {
           title: "Round 1",

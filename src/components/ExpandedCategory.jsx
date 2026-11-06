@@ -19,6 +19,8 @@ export default function ExpandedCategory({ category, onSelect }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: reduce ? 0.01 : 0.22, ease: EASE }}
+      data-detail-count={hasDetails ? category.details.length : 0}
+      data-details-open={showDetails}
     >
       <motion.button
       layoutId={`category-${category.id}`}
@@ -38,6 +40,7 @@ export default function ExpandedCategory({ category, onSelect }) {
       </motion.button>
 
       <motion.button
+      layout
   type="button"
   className="detail-card detail-description"
   style={{ zIndex: 3, cursor: hasDetails ? "pointer" : "default", textAlign: "left" }}
@@ -79,8 +82,16 @@ animate={{ opacity: 1, x: 0 }}
         </div>
         {category.additional ? (
           <div className="detail-block">
-            <h2 className="detail-label">Additional information</h2>
-            <p>{category.additional}</p>
+            <h2 className="detail-label">
+  {category.id === "science-2"
+    ? "Programming Knowledge:"
+    : "Additional information"}
+</h2>
+            <ul>
+  {category.additional.map((item, index) => (
+    <li key={index}>{item}</li>
+  ))}
+</ul>
           </div>
         ) : null}
       </motion.article>

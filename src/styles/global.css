@@ -117,3 +117,15 @@ a {
     transition: none;
   }
 }
+
+/* Hide website scrollbar while keeping scrolling enabled */
+
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
